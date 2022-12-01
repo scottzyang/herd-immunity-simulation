@@ -11,6 +11,7 @@ class Person(object):
         # TODO Define the other attributes of a person here
         self.is_vaccinated = is_vaccinated
         self.infection = infection
+        self.is_alive = True
 
     def did_survive_infection(self):
         # This method checks if a person survived an infection. 
@@ -21,7 +22,19 @@ class Person(object):
         # Otherwise they have survived infection and they are now vaccinated. 
         # Set their properties to show this
         # TODO: The method Should return a Boolean showing if they survived.
-        pass
+        if self.infection is not None:
+            survival_chance = random.uniform(0, 1)
+            # print(survival_chance)
+            if survival_chance < self.infection.mortality_rate:
+                self.is_vaccinated = False
+                self.is_alive = False
+                return self.is_alive
+            else:
+                self.is_vaccinated = True
+                return self.is_alive
+        else:
+            return self.is_alive
+
 
 if __name__ == "__main__":
     # This section is incomplete finish it and use it to test your Person class
@@ -35,6 +48,11 @@ if __name__ == "__main__":
     # Create an unvaccinated person and test their attributes
     unvaccinated_person = Person(2, False)
     # TODO Test unvaccinated_person's attributes here...
+    print('----------------------')
+    print(unvaccinated_person._id)
+    print(unvaccinated_person.is_vaccinated)
+    print(unvaccinated_person.infection)
+    print('----------------------')
 
     # Test an infected person. An infected person has an infection/virus
     # Create a Virus object to give a Person object an infection
@@ -44,6 +62,11 @@ if __name__ == "__main__":
     # TODO: complete your own assert statements that test
     # the values of each attribute
     # assert ...
+    assert infected_person._id == 3
+    assert infected_person.is_vaccinated is False
+    assert infected_person.infection is not None
+    assert infected_person.is_alive is True or False
+    print(f'Is alive: {infected_person.did_survive_infection()}')
 
     # You need to check the survival of an infected person. Since the chance
     # of survival is random you need to check a group of people. 
