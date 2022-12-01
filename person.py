@@ -75,7 +75,8 @@ if __name__ == "__main__":
     for i in range(1, 100):
         # TODO Make a person with an infection
         # TODO Append the person to the people list
-        pass
+        infected = Person(i, False, virus)
+        people.append(infected)
 
     # Now that you have a list of 100 people. Resolve whether the Person 
     # survives the infection or not by looping over the people list. 
@@ -83,7 +84,6 @@ if __name__ == "__main__":
     # for person in people:
     #     # For each person call that person's did_survive_infection method
     #     survived = person.did_survive_infection()
-
     # Count the people that survived and did not survive: 
    
     # did_survived = 0
@@ -92,6 +92,16 @@ if __name__ == "__main__":
     # TODO Loop over all of the people 
     # TODO If a person is_alive True add one to did_survive
     # TODO If a person is_alive False add one to did_not_survive
+    survived = 0
+    did_not_survive = 0
+    for person in people:
+        if person.did_survive_infection():
+            survived += 1
+        else: 
+            did_not_survive += 1
+    
+    print(survived)
+    print(did_not_survive)
 
     # TODO When the loop is complete print your results.
     # The results should roughly match the mortality rate of the virus
