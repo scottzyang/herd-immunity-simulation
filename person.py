@@ -82,13 +82,14 @@ if __name__ == "__main__":
     print(f'Survived: {survived}')
     print(f'Deaths: {did_not_survive}')
 
+    # Three additional tests
+    # TEST 1 -----------------------------------------------------------------
     # create pool of 100 uninfected people
     uninfected_people = []
 
     for i in range(1, 100):
         uninfected = Person(i, False)
         uninfected_people.append(uninfected)
-
 
     # generate random number to evalute infection count in pool of 100 people
     got_infected = 0
@@ -107,8 +108,35 @@ if __name__ == "__main__":
     print(f'Immune: {immune}')
     print('----------------------')
 
+    # TEST 2 -----------------------------------------------------------------
+    virus2 = Virus('COVID', 2, 1)
+    second_person = Person(1, False, virus2)
 
+    # evaluate attributes of second_person
+    assert second_person._id == 1
+    assert second_person.is_vaccinated is False
+    assert second_person.infection is not None
+    assert second_person.did_survive_infection() is False
+    assert second_person.is_infected is True
 
-    # Now count the infected and uninfect people from this group of people. 
-    # The number of infectedf people should be roughly the same as the 
-    # infection rate of the virus.
+    # TEST 3 -----------------------------------------------------------------
+    # create pool of 100, verify that survived is 0
+    covid_people = []
+    for i in range(1, 100):
+        covid_infected = Person(i, False, virus2)
+        covid_people.append(covid_infected)
+
+    # evaluate if person has survived and increment corresponding values
+    survived_covid = 0
+    did_not_survive_covid = 0
+    for person in covid_people:
+        if person.did_survive_infection():
+            survived_covid += 1
+        else: 
+            did_not_survive_covid += 1
+    
+    assert survived_covid == 0
+
+    # print results
+    print(f'Survived COVID: {survived_covid}')
+    print(f'COVID Deaths: {did_not_survive_covid}')
