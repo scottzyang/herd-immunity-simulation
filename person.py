@@ -11,6 +11,7 @@ class Person(object):
         # TODO Define the other attributes of a person here
         self.is_vaccinated = is_vaccinated
         self.infection = infection
+        self.is_infected = False
         self.is_alive = True
 
     def did_survive_infection(self):
@@ -23,6 +24,7 @@ class Person(object):
         # Set their properties to show this
         # TODO: The method Should return a Boolean showing if they survived.
         if self.infection is not None:
+            self.is_infected = True
             survival_chance = random.uniform(0, 1)
             # print(survival_chance)
             if survival_chance < self.infection.mortality_rate:
@@ -33,6 +35,7 @@ class Person(object):
                 self.is_vaccinated = True
                 return self.is_alive
         else:
+            self.is_infected = False
             return self.is_alive
 
 
@@ -100,8 +103,9 @@ if __name__ == "__main__":
         else: 
             did_not_survive += 1
     
-    print(survived)
-    print(did_not_survive)
+    print('----------------------')
+    print(f'Survived: {survived}')
+    print(f'Deaths: {did_not_survive}')
 
     # TODO When the loop is complete print your results.
     # The results should roughly match the mortality rate of the virus
@@ -114,6 +118,29 @@ if __name__ == "__main__":
     # Generate a random number. If that number is less than the 
     # infection rate of the virus that person is now infected. 
     # Assign the virus to that person's infection attribute. 
+    uninfected_people = []
+
+    for i in range(1, 100):
+        uninfected = Person(i, False)
+        uninfected_people.append(uninfected)
+
+    got_infected = 0
+    immune = 0
+
+    for person in uninfected_people:
+        immunity = random.uniform(0, 1)
+        if immunity < virus.repro_rate:
+            person.infection = virus
+            got_infected += 1
+        else:
+            immune += 1
+
+    print('----------------------')
+    print(f'Infected: {got_infected}')
+    print(f'Immune: {immune}')
+    print('----------------------')
+
+
 
     # Now count the infected and uninfect people from this group of people. 
     # The number of infectedf people should be roughly the same as the 
