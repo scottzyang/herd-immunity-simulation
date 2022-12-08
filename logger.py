@@ -3,7 +3,7 @@ class Logger(object):
         self.file_name = file_name
         # TODO:  Finish this initialization method. The file_name passed should be the
         # full file name of the file that the logs will be written to.
-        pass
+
 
     # The methods below are just suggestions. You can rearrange these or 
     # rewrite them to better suit your code style. 
@@ -30,7 +30,7 @@ class Logger(object):
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
         filename = open(self.file_name, 'w')
-        filename.write(f'Population size: {pop_size}, Vaccinated Percentage: {vacc_percentage}, Virus Name: {virus_name}, Mortality Rate: {mortality_rate}, Reproduction Rate: {basic_repro_num}')
+        filename.write(f'Population size: {pop_size}\nVaccinated Percentage: {vacc_percentage}\nVirus Name: {virus_name}\nMortality Rate: {mortality_rate}\nReproduction Rate: {basic_repro_num}\n')
         filename.close()
 
     def log_interactions(self, step_number, number_of_interactions, number_of_new_infections):
@@ -40,12 +40,15 @@ class Logger(object):
         # exactly what happened in the interaction and create a String, and write to your logfile.
         filename = open(self.file_name, 'a')
         filename.write(f'Step number: {step_number}\nInteractions: {number_of_interactions}\nNew Infections: {number_of_new_infections}\n')
+        filename.close()
 
     def log_infection_survival(self, step_number, population_count, number_of_new_fatalities):
         # TODO: Finish this method. If the person survives, did_die_from_infection
         # should be False.  Otherwise, did_die_from_infection should be True.
         # Append the results of the infection to the logfile
-        pass
+        filename = open(self.file_name, 'a')
+        filename.write(f'Step number: {step_number}\nPopulation count: {population_count}\nNew fatalities: {number_of_new_fatalities}')
+        filename.close()
 
     def log_time_step(self, time_step_number):
         # 
