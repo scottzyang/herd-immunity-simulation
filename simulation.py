@@ -9,8 +9,14 @@ class Simulation(object):
     def __init__(self, virus, pop_size, vacc_percentage, initial_infected=1):
         # TODO: Create a Logger object and bind it to self.logger.
         # Remember to call the appropriate logger method in the corresponding parts of the simulation.
+        self.logger = Logger('simulation.txt')
         
         # TODO: Store the virus in an attribute
+        self.virus = virus
+        self.pop_size = pop_size
+        self.vacc_percentage = vacc_percentage
+        self.initial_infected = initial_infected
+        self.people = self._create_population()
         # TODO: Store pop_size in an attribute
         # TODO: Store the vacc_percentage in a variable
         # TODO: Store initial_infected in a variable
@@ -19,7 +25,6 @@ class Simulation(object):
         # Use the _create_population() method to create the list and 
         # return it storing it in an attribute here. 
         # TODO: Call self._create_population() and pass in the correct parameters.
-        pass
 
     def _create_population(self):
         # TODO: Create a list of people (Person instances). This list 
