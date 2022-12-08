@@ -51,5 +51,5 @@ class Logger(object):
         filename.close()
 
     def log_time_step(self, time_step_number):
-        # 
-        pass
+        filename = open(self.file_name)
+        filename.write(f'Step Number:{time_step_number}\n')
