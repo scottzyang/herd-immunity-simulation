@@ -16,7 +16,8 @@ class Simulation(object):
         self.pop_size = pop_size
         self.vacc_percentage = vacc_percentage
         self.initial_infected = initial_infected
-        self.people = self._create_population()
+        self.society = self._create_population()
+        self.vaccinate_pop = pop_size * vacc_percentage
         # TODO: Store pop_size in an attribute
         # TODO: Store the vacc_percentage in a variable
         # TODO: Store initial_infected in a variable
@@ -31,17 +32,44 @@ class Simulation(object):
         # should have a total number of people equal to the pop_size. 
         # Some of these people will be uninfected and some will be infected.
         # The number of infected people should be equal to the the initial_infected
+        total_population = list()
+        for i in range(self.pop_size):
+            if self.initial_infected > 0:
+                total_population.append(Person(i, False, self.virus))
+            elif self.vaccinate_pop > 0: 
+                # virus parameter defaults to None
+                total_population.append(Person(i, True))
+            else: 
+                total_population.append(Person(i, False))
         # TODO: Return the list of people
-        pass
+        return total_population
 
     def _simulation_should_continue(self):
+        should_continue = True
         # This method will return a booleanb indicating if the simulation 
         # should continue. 
         # The simulation should not continue if all of the people are dead, 
         # or if all of the living people have been vaccinated. 
         # TODO: Loop over the list of people in the population. Return True
         # if the simulation should continue or False if not.
-        pass
+
+        ''' 
+        loop through the entire population, if they are dead add them to the dead count.
+        Compare dead count to initial population, if they are equal end sim.
+        else, continue sim. 
+        '''
+        dead_count = list()
+        for person in self.society:
+            # if person is dead, add to dead count
+            if not person.is_alive:
+                dead_count.append(person)
+        
+        if len(dead_count) == len(self.pop_size):
+            should_continue = False
+        else:
+            should_continue = True
+        
+        return should_continue
 
     def run(self):
         # This method starts the simulation. It should track the number of 
