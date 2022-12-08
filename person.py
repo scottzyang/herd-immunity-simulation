@@ -7,20 +7,17 @@ class Person(object):
     # Define a person. 
     def __init__(self, _id, is_vaccinated, infection = None):
         # define attributes for person class
-        self._id = _id  # int
+        self._id = _id 
         self.is_vaccinated = is_vaccinated
         self.infection = infection
-        self.is_infected = False
         self.is_alive = True
 
     def did_survive_infection(self):
         # Generate random number to determine survivability chance of infected person
+        survival_chance = random.random()
         if self.infection is not None:
-            self.is_infected = True
-            survival_chance = random.uniform(0, 1)
-            # print(survival_chance)
             if survival_chance < self.infection.mortality_rate:
-                self.is_vaccinated = False
+                self.infection = None
                 self.is_alive = False
                 return self.is_alive
             else:
@@ -28,7 +25,6 @@ class Person(object):
                 return self.is_alive
         # logic for non-infected person        
         else:
-            self.is_infected = False
             return self.is_alive
 
 
@@ -117,7 +113,6 @@ if __name__ == "__main__":
     assert second_person.is_vaccinated is False
     assert second_person.infection is not None
     assert second_person.did_survive_infection() is False
-    assert second_person.is_infected is True
 
     # TEST 3 -----------------------------------------------------------------
     # create pool of 100, verify that survived is 0
