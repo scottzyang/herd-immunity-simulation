@@ -15,7 +15,10 @@ class Person(object):
     def did_survive_infection(self):
         # Generate random number to determine survivability chance of infected person
         survival_chance = random.random()
-        if self.infection is not None:
+
+        # if they're infected
+        if self.infection is not None and self.is_alive and not self.is_vaccinated:
+            # if survival chance is less than mortality rate 
             if survival_chance < self.infection.mortality_rate:
                 self.infection = None
                 self.is_alive = False
