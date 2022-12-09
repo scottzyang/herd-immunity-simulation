@@ -20,6 +20,10 @@ class Simulation(object):
         self.time_step_number = 0
         self.interactions = 0
         self.number_new_infections = 0
+        self.final_survivors = 0
+        self.total_vax = 0
+        self.fatalities = 0
+        self.vax_saves = 0
 
         # TODO: Store pop_size in an attribute
         # TODO: Store the vacc_percentage in a variable
@@ -89,23 +93,32 @@ class Simulation(object):
         # steps the simulation has run and check if the simulation should 
         # continue at the end of each step. 
         should_continue = True
+        self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus.name, self.virus.mortality_rate, self.virus.repro_rate)
 
         while should_continue:
             # TODO: Increment the time_step_counter
             self.time_step_number += 1
             print(f'Current Time Step: {self.time_step_number}')
             self.time_step()
+            self.logger.log_interactions(self.time_step_number, self.interactions, self.number_new_infections)
             should_continue = self._simulation_should_continue()
             # TODO: for every iteration of this loop, call self.time_step() 
             # Call the _simulation_should_continue method to determine if 
             # the simulation should continue
-            
 
+        # determine final numbers
+        for person in self.society:
+            if person.is_vaccinated:
+                self.total_vax += 1
+                self.final_survivors += 1
+            elif not person.is_alive:
+                self.fatalities += 1
+            
+        self.logger.final_data(self.final_survivors, self.fatalities, self.total_vax, self.interactions, self.number_new_infections, self.vax_saves)
         # TODO: Write meta data to the logger. This should be starting 
         # statistics for the simulation. It should include the initial
         # population size and the virus. 
         #def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num):
-        # self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus.name, self.virus.mortality_rate, self.virus.repro_rate)
         
         # TODO: When the simulation completes you should conclude this with 
         # the logger. Send the final data to the logger. 
@@ -144,7 +157,10 @@ class Simulation(object):
         self._infect_newly_infected()
 
         for person in self.society:
-            person.did_survive_infection()
+            if person.did_survive_infection():
+                self.vax_saves += 1
+            
+            
         
 
     def interaction(self, infected_person, random_person):
@@ -167,6 +183,7 @@ class Simulation(object):
             #     Simulation object's newly_infected array, so that their infected
             #     attribute can be changed to True at the end of the time step.
         # TODO: Call logger method during this method.
+        
 
     def _infect_newly_infected(self):
         # TODO: Call this method at the end of every time step and infect each Person.
@@ -176,7 +193,6 @@ class Simulation(object):
             person.infection = self.virus
             self.number_new_infections += 1
         
-
         self.newly_infected = []
 
 
