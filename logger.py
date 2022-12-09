@@ -29,8 +29,8 @@ class Logger(object):
         # the 'a' mode to append a new log to the end, since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        filename = open(self.file_name, 'w')
-        filename.write(f'Population size: {pop_size}\nVaccinated Percentage: {vacc_percentage}\nVirus Name: {virus_name}\nMortality Rate: {mortality_rate}\nReproduction Rate: {basic_repro_num}\n')
+        filename = open(self.file_name, 'a')
+        filename.write(f'Population size: {pop_size}\nVaccinated Percentage: {vacc_percentage}\nVirus Name: {virus_name}\nMortality Rate: {mortality_rate}\nReproduction Rate: {basic_repro_num}\n\n')
         filename.close()
 
     def log_interactions(self, step_number, number_of_interactions, number_of_new_infections):
@@ -39,7 +39,7 @@ class Logger(object):
         # along with whether they are sick or vaccinated when they interact to determine
         # exactly what happened in the interaction and create a String, and write to your logfile.
         filename = open(self.file_name, 'a')
-        filename.write(f'Step number: {step_number}\nInteractions: {number_of_interactions}\nNew Infections: {number_of_new_infections}\n')
+        filename.write(f'Step number: {step_number}\nInteractions: {number_of_interactions}\nNew Infections: {number_of_new_infections}\n\n')
         filename.close()
 
     def log_infection_survival(self, step_number, population_count, number_of_new_fatalities):
@@ -53,4 +53,9 @@ class Logger(object):
     def log_time_step(self, time_step_number):
         filename = open(self.file_name)
         filename.write(f'Step Number:{time_step_number}\n')
+        filename.close()
+
+    def final_data(self, survivors, fatalities, vaccinated_pop, interactions, infections, vax_saves):
+        filename = open(self.file_name, 'a')
+        filename.write(f'Survivors: {survivors}\nFatalities: {fatalities}\nVaccinated Populations: {vaccinated_pop}\nTotal Interactions: {interactions}\nTotal Infections: {infections}\nSaved by Vaccines: {vax_saves}')
         filename.close()
