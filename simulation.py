@@ -3,6 +3,7 @@ import random, sys
 from person import Person
 from logger import Logger
 from virus import Virus
+import argparse
 
 
 class Simulation(object):
@@ -10,16 +11,15 @@ class Simulation(object):
         # TODO: Create a Logger object and bind it to self.logger.
         # Remember to call the appropriate logger method in the corresponding parts of the simulation.
         self.logger = Logger('simulation.txt')
-        
+        self.vacc_percentage = vacc_percentage
         # TODO: Store the virus in an attribute
         self.virus = virus
         self.pop_size = pop_size
         self.society = self._create_population(vacc_percentage, initial_infected)
         self.newly_infected = []
-
-        # used to verify that simulation works
-        self.vaccinated_pop = int(pop_size * vacc_percentage)
-        self.fatalities = 0
+        self.time_step_number = 0
+        self.interactions = 0
+        self.number_new_infections = 0
 
         # TODO: Store pop_size in an attribute
         # TODO: Store the vacc_percentage in a variable
@@ -88,8 +88,6 @@ class Simulation(object):
         # This method starts the simulation. It should track the number of 
         # steps the simulation has run and check if the simulation should 
         # continue at the end of each step. 
-
-        self.time_step_number = 0
         should_continue = True
 
         while should_continue:
@@ -106,7 +104,8 @@ class Simulation(object):
         # TODO: Write meta data to the logger. This should be starting 
         # statistics for the simulation. It should include the initial
         # population size and the virus. 
-        # self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus)
+        #def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num):
+        # self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus.name, self.virus.mortality_rate, self.virus.repro_rate)
         
         # TODO: When the simulation completes you should conclude this with 
         # the logger. Send the final data to the logger. 
@@ -140,6 +139,7 @@ class Simulation(object):
         for sick_person in sick_people:
             for random_person in random_group:
                 self.interaction(sick_person, random_person)
+                self.interactions += 1
 
         self._infect_newly_infected()
 
@@ -174,6 +174,7 @@ class Simulation(object):
         # to reset self.newly_infected back to an empty list.
         for person in self.newly_infected:
             person.infection = self.virus
+            self.number_new_infections += 1
         
 
         self.newly_infected = []
@@ -182,18 +183,36 @@ class Simulation(object):
 
 if __name__ == "__main__":
     # Test your simulation here
-    virus_name = "Sniffles"
-    repro_num = 0.5
-    mortality_rate = 0.12
-    virus = Virus(virus_name, repro_num, mortality_rate)
+    parser = argparse.ArgumentParser(description='simulates viral infection in population')
+    # virus argument
+    parser.add_argument('virus_name', metavar='virus_name', type=str, help='Add virus name')
+    parser.add_argument('repro_num', metavar='repro_num', type=float, help='Add reproduction rate')
+    parser.add_argument('mortality_rate', metavar='mortality_rate', type=float, help='Add mortality rate')
+    parser.add_argument('pop_size', metavar='pop_size', type=int, help='Add population')
+    parser.add_argument('vacc_percentage', metavar='vacc_percentage', type=float, help='Add vaccination percentage')
+    parser.add_argument('initial_infected', metavar='initial_infected', type=int, help='Add initial infected')
+    args = parser.parse_args()
 
-    # # Set some values used by the simulation
-    pop_size = 200
-    vacc_percentage = 0.1
-    initial_infected = 6
+    virus_name = args.virus_name
+    repro_num = args.repro_num
+    mortality_rate = args.mortality_rate
+    pop_size = args.pop_size
+    vacc_percentage = args.vacc_percentage
+    initial_infected = args.initial_infected
+
+    # virus_name = "Sniffles"
+    # repro_num = 0.5
+    # mortality_rate = 0.12
+    # virus = Virus(virus_name, repro_num, mortality_rate)
+
+    # # # Set some values used by the simulation
+    # pop_size = 200
+    # vacc_percentage = 0.1
+    # initial_infected = 6
 
     # # Make a new instance of the imulation
-    virus = Virus(virus, pop_size, vacc_percentage)
+    virus = Virus(virus_name, pop_size, vacc_percentage)
+    #def __init__(self, virus, pop_size, vacc_percentage, initial_infected=1):
     sim = Simulation(virus, pop_size, vacc_percentage, initial_infected)
 
     # assert len(sim.society) == pop_size
