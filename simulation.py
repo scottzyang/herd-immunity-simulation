@@ -20,6 +20,7 @@ class Simulation(object):
         self.time_step_number = 0
         self.interactions = 0
         self.number_new_infections = 0
+        self.final_infections = 0
         self.final_survivors = 0
         self.total_vax = 0
         self.fatalities = 0
@@ -106,6 +107,11 @@ class Simulation(object):
             # Call the _simulation_should_continue method to determine if 
             # the simulation should continue
 
+        # total infections
+        for person in self.society:
+            if person.infection is not None:
+                self.final_infections += 1
+
         # determine final numbers
         for person in self.society:
             if person.is_vaccinated:
@@ -114,7 +120,7 @@ class Simulation(object):
             elif not person.is_alive:
                 self.fatalities += 1
             
-        self.logger.final_data(self.final_survivors, self.fatalities, self.total_vax, self.interactions, self.number_new_infections, self.vax_saves)
+        self.logger.final_data(self.final_survivors, self.fatalities, self.final_infections, self.total_vax, self.interactions, self.number_new_infections, self.vax_saves)
         # TODO: Write meta data to the logger. This should be starting 
         # statistics for the simulation. It should include the initial
         # population size and the virus. 
