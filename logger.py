@@ -53,3 +53,4 @@ class Logger(object):
     def log_time_step(self, time_step_number):
         filename = open(self.file_name)
         filename.write(f'Step Number:{time_step_number}\n')
+        filename.close()
