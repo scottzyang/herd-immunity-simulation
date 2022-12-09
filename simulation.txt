@@ -1,0 +1,309 @@
+Population size: 1000
+Vaccinated Percentage: 0.4
+Virus Name: Sniffles
+Mortality Rate: 0.4
+Reproduction Rate: 1000
+
+Step number: 1
+Interactions: 600
+New Infections: 372
+
+Step number: 2
+Interactions: 3900
+New Infections: 2055
+
+Step number: 3
+Interactions: 10800
+New Infections: 5505
+
+Step number: 4
+Interactions: 20700
+New Infections: 9861
+
+Step number: 5
+Interactions: 32800
+New Infections: 14943
+
+Step number: 6
+Interactions: 47200
+New Infections: 21279
+
+Step number: 7
+Interactions: 63900
+New Infections: 27959
+
+Step number: 8
+Interactions: 83400
+New Infections: 33809
+
+Step number: 9
+Interactions: 105100
+New Infections: 40753
+
+Step number: 10
+Interactions: 128900
+New Infections: 45275
+
+Step number: 11
+Interactions: 154100
+New Infections: 49811
+
+Step number: 12
+Interactions: 180300
+New Infections: 55575
+
+Step number: 13
+Interactions: 207500
+New Infections: 59383
+
+Step number: 14
+Interactions: 235000
+New Infections: 65708
+
+Step number: 15
+Interactions: 264100
+New Infections: 69200
+
+Step number: 16
+Interactions: 294000
+New Infections: 71592
+
+Step number: 17
+Interactions: 324400
+New Infections: 74936
+
+Step number: 18
+Interactions: 355600
+New Infections: 76184
+
+Step number: 19
+Interactions: 386900
+New Infections: 79940
+
+Step number: 20
+Interactions: 419100
+New Infections: 82194
+
+Step number: 21
+Interactions: 451900
+New Infections: 85146
+
+Step number: 22
+Interactions: 485200
+New Infections: 87477
+
+Step number: 23
+Interactions: 518900
+New Infections: 90173
+
+Step number: 24
+Interactions: 553000
+New Infections: 92560
+
+Step number: 25
+Interactions: 587700
+New Infections: 93948
+
+Step number: 26
+Interactions: 622700
+New Infections: 93948
+
+Step number: 27
+Interactions: 657700
+New Infections: 94298
+
+Step number: 28
+Interactions: 692800
+New Infections: 95000
+
+Step number: 29
+Interactions: 728000
+New Infections: 95352
+
+Step number: 30
+Interactions: 763200
+New Infections: 95704
+
+Step number: 31
+Interactions: 798400
+New Infections: 95704
+
+Step number: 32
+Interactions: 833600
+New Infections: 95704
+
+Step number: 33
+Interactions: 868800
+New Infections: 96760
+
+Step number: 34
+Interactions: 904200
+New Infections: 96760
+
+Step number: 35
+Interactions: 939600
+New Infections: 96760
+
+Step number: 36
+Interactions: 975000
+New Infections: 96760
+
+Step number: 37
+Interactions: 1010400
+New Infections: 96760
+
+Step number: 38
+Interactions: 1045800
+New Infections: 97822
+
+Step number: 39
+Interactions: 1081200
+New Infections: 97822
+
+Step number: 40
+Interactions: 1116600
+New Infections: 97822
+
+Step number: 41
+Interactions: 1152000
+New Infections: 98176
+
+Step number: 42
+Interactions: 1187500
+New Infections: 98176
+
+Step number: 43
+Interactions: 1223000
+New Infections: 98176
+
+Step number: 44
+Interactions: 1258500
+New Infections: 98176
+
+Step number: 45
+Interactions: 1294000
+New Infections: 98176
+
+Step number: 46
+Interactions: 1329500
+New Infections: 98176
+
+Step number: 47
+Interactions: 1365000
+New Infections: 98176
+
+Step number: 48
+Interactions: 1400500
+New Infections: 98176
+
+Step number: 49
+Interactions: 1436000
+New Infections: 98176
+
+Step number: 50
+Interactions: 1471500
+New Infections: 98176
+
+Step number: 51
+Interactions: 1507000
+New Infections: 98176
+
+Step number: 52
+Interactions: 1542500
+New Infections: 98176
+
+Step number: 53
+Interactions: 1578000
+New Infections: 98176
+
+Step number: 54
+Interactions: 1613500
+New Infections: 98531
+
+Step number: 55
+Interactions: 1649100
+New Infections: 98531
+
+Step number: 56
+Interactions: 1684700
+New Infections: 98531
+
+Step number: 57
+Interactions: 1720300
+New Infections: 98531
+
+Step number: 58
+Interactions: 1755900
+New Infections: 98531
+
+Step number: 59
+Interactions: 1791500
+New Infections: 98531
+
+Step number: 60
+Interactions: 1827100
+New Infections: 98531
+
+Step number: 61
+Interactions: 1862700
+New Infections: 98531
+
+Step number: 62
+Interactions: 1898300
+New Infections: 98531
+
+Step number: 63
+Interactions: 1933900
+New Infections: 98531
+
+Step number: 64
+Interactions: 1969500
+New Infections: 98531
+
+Step number: 65
+Interactions: 2005100
+New Infections: 98531
+
+Step number: 66
+Interactions: 2040700
+New Infections: 98531
+
+Step number: 67
+Interactions: 2076300
+New Infections: 98531
+
+Step number: 68
+Interactions: 2111900
+New Infections: 98531
+
+Step number: 69
+Interactions: 2147500
+New Infections: 98531
+
+Step number: 70
+Interactions: 2183100
+New Infections: 98531
+
+Step number: 71
+Interactions: 2218700
+New Infections: 98531
+
+Step number: 72
+Interactions: 2254300
+New Infections: 98531
+
+Step number: 73
+Interactions: 2289900
+New Infections: 98531
+
+Step number: 74
+Interactions: 2325500
+New Infections: 98887
+
+Survivors: 757
+Fatalities: 243
+Final population Infected: 357
+Vaccinated Populations: 757
+Total Interactions: 2325500
+Total Infections: 98887
+Saved by Vaccines: 57794
